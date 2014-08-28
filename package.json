@@ -1,0 +1,12 @@
+{
+    "name": "saber-fastbutton",
+    "version": "0.1.0",
+    "description": "解决移动端300ms点击延迟与点击穿透问题。该模块是基于 Google FastButton 的实现。",
+    "main": "main",
+    "maintainers": [
+        { "name": "firede", "email": "firede@firede.us" }
+    ],
+    "license": "MIT",
+    "repository": "git://github.com/ecomfe/saber-fastbutton.git",
+    "bugs": "https://github.com/ecomfe/saber-fastbutton/issues"
+}

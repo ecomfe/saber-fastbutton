@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Basic Demo</title>
+    <style>
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    .container {
+        padding: 20px;
+        font-size: 25px;
+    }
+    .btn1,
+    .btn2,
+    .btn3,
+    .reset {
+        position: absolute;
+        top: 30px;
+        padding: 20px;
+        opacity: .8;
+        font-size: 14px;
+        text-align: center;
+        background: #369;
+        color: #fff;
+    }
+    .btn1 {
+        left: 20px;
+    }
+    .btn2 {
+        right: 20px;
+        background: #396;
+        color: #fff;
+    }
+    .btn3 {
+        left: 20px;
+        top: 110px;
+        background: #933;
+        color: #fff;
+    }
+    .reset {
+        position: static;
+    }
+    .status {
+        padding: 20px;
+        text-align: center;
+        background: #eee;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p><a href="http://www.baidu.com">点击穿透、300ms延迟神马的滚粗！</a></p>
+        <p><a href="http://www.baidu.com">点击穿透、300ms延迟神马的滚粗！</a></p>
+        <p><a href="http://www.baidu.com">点击穿透、300ms延迟神马的滚粗！</a></p>
+    </div>
+    <div class="btn1">click</div>
+    <div class="btn2">touchstart</div>
+    <div class="btn3">FastButton</div>
+
+    <div class="status">status</div>
+
+    <div class="reset">恢复按钮</div>
+
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js"></script>
+    <script>
+    require.config({
+        packages: [
+            {
+                name: 'saber-fastbutton',
+                location: '../src'
+            }
+        ]
+    });
+
+    require( [ 'saber-fastbutton' ], function( FastButton ) {
+        var btn1 = document.querySelector('.btn1');
+        var btn2 = document.querySelector('.btn2');
+        var btn3 = document.querySelector('.btn3');
+
+        var reset = document.querySelector('.reset');
+        var statusEl = document.querySelector('.status');
+
+        btn1.addEventListener('click', function (ev) {
+            status('blue');
+            btn1.style.display = 'none';
+        });
+
+        btn2.addEventListener('touchstart', function (ev) {
+            status('green');
+            btn2.style.display = 'none';
+        });
+
+        new FastButton(btn3, function (ev) {
+            status('red');
+            btn3.style.display = 'none';
+        });
+
+        new FastButton(reset, function (ev) {
+            btn1.style.display = 'block';
+            btn2.style.display = 'block';
+            btn3.style.display = 'block';
+            status('#eee');
+        });
+
+        function status(color) {
+            statusEl.style.backgroundColor = color;
+        }
+    });
+    </script>
+</body>
+</html>
