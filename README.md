@@ -34,8 +34,14 @@ btn.dispose();
 
 创建 `FastClick` 实例。
 
+`FastClick` 本身没提供事件委托，如需要可根据 `handler` 中传入的事件对象自己实现。
+
 + **element** `{HTMLElement}` 目标元素
 + **handler** `{Function}` 处理函数，第一个参数为事件对象
+
+### FastClick#dispose()
+
+销毁 `FastClick` 实例。
 
 ## Comparison
 
