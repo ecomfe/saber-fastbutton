@@ -59,7 +59,6 @@ define(function () {
         this.handler = handler;
 
         element.addEventListener('touchstart', this, false);
-        element.addEventListener('click', this, false);
     }
 
     /**
@@ -76,10 +75,7 @@ define(function () {
                 this.onTouchMove(event);
                 break;
             case 'touchend':
-                this.onClick(event);
-                break;
-            case 'click':
-                this.onClick(event);
+                this.onTouchEnd(event);
                 break;
         }
     };
@@ -116,21 +112,19 @@ define(function () {
     };
 
     /**
-     * 点击事件
+     * touchend事件
      *
      * @param {Event} event 事件对象
      */
-    FastButton.prototype.onClick = function (event) {
+    FastButton.prototype.onTouchEnd = function (event) {
         event.stopPropagation();
         this.reset();
 
-        // 执行事件处理函数
-        this.handler(event);
+        // 执行事件处理函数，并修正this
+        this.handler.call(this.element, event);
 
         // 将坐标传给点击破坏器
-        if (event.type === 'touchend') {
-            clickbuster.preventGhostClick(this.startX, this.startY);
-        }
+        clickbuster.preventGhostClick(this.startX, this.startY);
     };
 
     /**
@@ -148,7 +142,6 @@ define(function () {
     FastButton.prototype.dispose = function () {
         this.reset();
         this.element.removeEventListener('touchstart', this, false);
-        this.element.removeEventListener('click', this, false);
     };
 
     /**

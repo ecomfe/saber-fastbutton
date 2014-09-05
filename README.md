@@ -3,6 +3,8 @@ saber-fastbutton
 
 解决移动端 `300ms` 点击延迟与点击穿透问题。该模块是基于 [Google FastButton](https://developers.google.com/mobile/articles/fast_buttons) 的实现。
 
+_注：不支持非移动设备。_
+
 ## Usage
 
 通过 `edp` 引入模块：
