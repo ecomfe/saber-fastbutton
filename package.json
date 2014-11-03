@@ -1,6 +1,6 @@
 {
     "name": "saber-fastbutton",
-    "version": "0.2.0",
+    "version": "1.0.0",
     "description": "解决移动端300ms点击延迟与点击穿透问题。该模块是基于 Google FastButton 的实现。",
     "main": "main",
     "maintainers": [
